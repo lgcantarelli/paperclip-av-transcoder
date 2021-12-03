@@ -47,8 +47,11 @@ module Paperclip
       dst = Tempfile.new([@basename, @format ? ".#{@format}" : ''])
       dst.binmode
 
+      p "[PAVT] Making..."
+      p "[PAVT] Meta rotate #{@meta[:rotate]}"
+
       if @meta
-        log "Transcoding supported file #{@file.path}"
+        p "[PAVT] Transcoding supported file #{@file.path}"
         @cli.add_source(@file.path)
         @cli.add_destination(dst.path)
         @cli.reset_input_filters
@@ -58,7 +61,7 @@ module Paperclip
           @cli.filter_seek @time
 
           if @auto_rotate && !@meta[:rotate].nil?
-            log "Adding rotation #{@meta[:rotate]}"
+            p "[PAVT] Adding rotation #{@meta[:rotate]}"
             case @meta[:rotate]
             when 90
               @convert_options[:output][:vf] = "'transpose=1'"
