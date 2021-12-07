@@ -48,7 +48,7 @@ module Paperclip
       dst.binmode
 
       p "[PAVT] Making..."
-      p "[PAVT] Meta rotate #{@meta[:rotate]}"
+      p "[PAVT] Meta info #{@meta}"
 
       if @meta
         p "[PAVT] Transcoding supported file #{@file.path}"
